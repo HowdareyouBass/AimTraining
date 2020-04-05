@@ -13,21 +13,6 @@ namespace Game
 {
     public partial class Form1 : Form
     {
-        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, UIntPtr dwExtraInfo);
-        [Flags]
-        public enum MouseEventFlags : uint
-        {
-            LEFTDOWN = 0x00000002,
-            LEFTUP = 0x00000004,
-            MIDDLEDOWN = 0x00000020,
-            MIDDLEUP = 0x00000040,
-            MOVE = 0x00000001,
-            ABSOLUTE = 0x00008000,
-            RIGHTDOWN = 0x00000008,
-            RIGHTUP = 0x00000010
-        }
-
         Enemy Rect1;
         Enemy Rect2;
         Enemy Rect3;
@@ -47,8 +32,10 @@ namespace Game
         public int ShowSpeed;
         int random_0_11;
         int ScoreX;
+        int harder;
         Point mouse_location;
-        public Form1()
+        Menu c;
+        public Form1(int hard)
         {
             InitializeComponent();
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint, true);
@@ -56,36 +43,61 @@ namespace Game
             SquareW = 100;
             Speed = 5;
             SquareSpeed = 2;
-            ScoreX = 500;
+            ScoreX = 100;
             Score = 0;
             HeightT = 700;
             WidthT = 1200;
             this.Size = new Size(WidthT, HeightT);
+            harder = hard;
+
+            label1.Location = new Point((Width - label1.Size.Width) / 2 ,(Height - label1.Size.Height) / 2);
+            
+            label1.Hide();
+            Retry.Hide();
+            MainMenu.Hide();
 
             Random rnd = new Random();
 
+            if (hard == 1)
+            {
+                SquareW = 100;
+            }
+            if(hard == 2)
+            {
+                SquareW = 70;
+            }
+            if(hard == 3)
+            {
+                SquareW = 50;
+            }
+            if(hard == 4)
+            {
+                SquareW = 30;
+            }
 
-            Rect1 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, false, true, true);
-            Rect2 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
-            Rect3 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
-            Rect4 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
-            Rect5 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
-            Rect6 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
-            Rect7 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
-            Rect8 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
-            Rect9 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
-            Rect10 = new Enemy(rnd.Next(0, (WidthT - 10) - SquareW), rnd.Next(0, (HeightT - 10) - SquareW), SquareW, true, true, true);
+            Rect1 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, false, true, true);
+            Rect2 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
+            Rect3 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
+            Rect4 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
+            Rect5 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
+            Rect6 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
+            Rect7 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
+            Rect8 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
+            Rect9 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
+            Rect10 = new Enemy(rnd.Next(0, (WidthT - 5) - SquareW), rnd.Next(0, (HeightT - 15) - SquareW), SquareW, true, true, true);
 
             Rndall();
-
+            
             timer1.Interval = Speed;
             timer2.Interval = Speed - 1;
             timer3.Interval = ShowSpeed;
             timer4.Interval = 1;
+            timer5.Interval = 20000;
             timer1.Tick += new EventHandler(update);
             timer2.Tick += new EventHandler(BounceUpdate);
             timer3.Tick += new EventHandler(ShowRnd);
             timer4.Tick += new EventHandler(UpdateAll);
+            timer5.Tick += new EventHandler(YouLose);
             timer1.Start();
             timer2.Start();
             timer3.Start();
@@ -93,24 +105,107 @@ namespace Game
             this.MouseDown += Check;
         }
 
+        private void YouLose(object sender, EventArgs e)
+        {
+            label1.Text = "Ты проиграл!";
+            Score = 0;
+            label1.Show();
+            Retry.Show();
+            MainMenu.Show();
+            timer1.Stop();
+            timer2.Stop();
+            timer3.Stop();
+            Rect1.isHide = true;
+            Rect2.isHide = true;
+            Rect3.isHide = true;
+            Rect4.isHide = true;
+            Rect5.isHide = true;
+            Rect6.isHide = true;
+            Rect7.isHide = true;
+            Rect8.isHide = true;
+            Rect9.isHide = true;
+            Rect10.isHide = true;
+            Invalidate();
+        }
+
         private void UpdateAll(object sender, EventArgs e)
         {
             score.Text = Score.ToString();
-            if(Score > 1000)
+            if(Score == 1000)
             {
+                level.Text = "Level 2";
+                SquareSpeed = 3;
+            }
+            if(Score == 2000)
+            {
+                level.Text = "Level 3";
                 SquareSpeed = 4;
             }
-            if(Score > 3000)
+            if(Score == 3000)
             {
-                ShowSpeed = 700;
+                level.Text = "Level 4";
+                SquareSpeed = 5;
+                ShowSpeed = 300;
             }
-            if(Score > 5000)
+            if(Score == 4000)
             {
+                level.Text = "Level 5";
+                SquareSpeed = 6;
+            }
+            if(Score == 5000)
+            {
+                level.Text = "Level 6";
                 SquareSpeed = 7;
+                ScoreX = 200;
             }
-            if(Score > 7000)
+            if(Score == 7000)
             {
-                SquareW = 70;
+                level.Text = "Level 7";
+                ShowSpeed = 200;
+                SquareSpeed = 10;
+            }
+            if(Score == 8000)
+            {
+                level.Text = "Level 8";
+                ShowSpeed = 100;
+            }
+            if(Score == 9000)
+            {
+                level.Text = "Level 9";
+                ShowSpeed = 50;
+            }
+            if(Score == 9600)
+            {
+                level.Text = "Level 10";
+                ShowSpeed = 40;
+            }
+            if(Score == 10000)
+            {
+                label1.Show();
+                Retry.Show();
+                MainMenu.Show();
+                timer1.Stop();
+                timer2.Stop();
+                timer3.Stop();
+                Rect1.isHide = true;
+                Rect2.isHide = true;
+                Rect3.isHide = true;
+                Rect4.isHide = true;
+                Rect5.isHide = true;
+                Rect6.isHide = true;
+                Rect7.isHide = true;
+                Rect8.isHide = true;
+                Rect9.isHide = true;
+                Rect10.isHide = true;
+                Invalidate();
+            }
+            if (Rect1.isHide == false && Rect2.isHide == false && Rect3.isHide == false && Rect4.isHide == false && Rect5.isHide == false && Rect6.isHide == false && Rect7.isHide == false && Rect8.isHide == false && Rect9.isHide == false && Rect10.isHide == false)
+            {
+                timer5.Start();
+            }
+            else
+            {
+                timer5.Stop();
             }
             SetSquare(Rect1);
             SetSquare(Rect2);
@@ -266,8 +361,11 @@ namespace Game
         }
         private void Hide(Enemy c)
         {
+            Random rnd = new Random();
             if (HitBoxCheck(c))
             {
+                c.rec.X = rnd.Next(0, (WidthT - 5) - SquareW);
+                c.rec.Y = rnd.Next(0, (HeightT - 15) - SquareW);
                 c.isHide = true;
             }
         }
@@ -524,9 +622,29 @@ namespace Game
                 Solid(Color.DarkGreen, Rect10, e);
             }
         }
-        private void timer1_Tick(object sender, EventArgs e)
+
+        private void Retry_Click(object sender, EventArgs e)
         {
-            
+            Score = 0;
+            ShowSpeed = 1000;
+            SquareW = 100;
+            Speed = 5;
+            SquareSpeed = 2;
+            label1.Hide();
+            Retry.Hide();
+            MainMenu.Hide();
+            timer1.Start();
+            timer2.Start();
+            timer3.Start();
+            Invalidate();
+        }
+
+        private void MainMenu_Click(object sender, EventArgs e)
+        {
+            c = new Menu(harder);
+            this.Hide();
+            c.ShowDialog();
+            this.Close();
         }
     }
 }

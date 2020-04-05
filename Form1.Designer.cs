@@ -34,11 +34,12 @@
             this.score = new System.Windows.Forms.Label();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.level = new System.Windows.Forms.Label();
+            this.Retry = new System.Windows.Forms.Button();
+            this.MainMenu = new System.Windows.Forms.Button();
+            this.timer5 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // score
             // 
@@ -50,11 +51,57 @@
             this.score.TabIndex = 0;
             this.score.Text = "label1";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(192, 275);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(256, 46);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Ты Выиграл!";
+            // 
+            // level
+            // 
+            this.level.AutoSize = true;
+            this.level.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.level.Location = new System.Drawing.Point(31, 23);
+            this.level.Name = "level";
+            this.level.Size = new System.Drawing.Size(101, 31);
+            this.level.TabIndex = 2;
+            this.level.Text = "Level 1";
+            // 
+            // Retry
+            // 
+            this.Retry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Retry.Location = new System.Drawing.Point(519, 402);
+            this.Retry.Name = "Retry";
+            this.Retry.Size = new System.Drawing.Size(183, 43);
+            this.Retry.TabIndex = 3;
+            this.Retry.Text = "Повтор";
+            this.Retry.UseVisualStyleBackColor = true;
+            this.Retry.Click += new System.EventHandler(this.Retry_Click);
+            // 
+            // MainMenu
+            // 
+            this.MainMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MainMenu.Location = new System.Drawing.Point(519, 451);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(183, 43);
+            this.MainMenu.TabIndex = 4;
+            this.MainMenu.Text = "Главное Меню";
+            this.MainMenu.UseVisualStyleBackColor = true;
+            this.MainMenu.Click += new System.EventHandler(this.MainMenu_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 661);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.MainMenu);
+            this.Controls.Add(this.Retry);
+            this.Controls.Add(this.level);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.score);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -72,6 +119,11 @@
         private System.Windows.Forms.Label score;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label level;
+        private System.Windows.Forms.Button Retry;
+        private System.Windows.Forms.Button MainMenu;
+        private System.Windows.Forms.Timer timer5;
     }
 }
 

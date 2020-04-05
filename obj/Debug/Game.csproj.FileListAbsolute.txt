@@ -8,3 +8,6 @@ C:\Users\79081\source\repos\Game\obj\Debug\Game.csproj.GenerateResource.cache
 C:\Users\79081\source\repos\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\79081\source\repos\Game\obj\Debug\Game.exe
 C:\Users\79081\source\repos\Game\obj\Debug\Game.pdb
+C:\Users\79081\source\repos\Game\obj\Debug\Game.Menu.resources
+C:\Users\79081\source\repos\Game\obj\Debug\Game.Settings.resources
+C:\Users\79081\source\repos\Game\obj\Debug\Game.Tutorial.resources

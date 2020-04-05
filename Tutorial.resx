@@ -117,19 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>104, 17</value>
-  </metadata>
-  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="timer3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>191, 17</value>
-  </metadata>
-  <metadata name="timer4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>278, 17</value>
-  </metadata>
-  <metadata name="timer5.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>365, 17</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Здраствуй новичёк!
+Хочешь играть в шутеры от первого лица, но у тебя не хватает рефлексов и умений?
+Тогда эта игра для тебя.
+Она улучшит твои навыки владения своей мышкой!
+Правила просты нужно кликать по кубикам.
+С каждым уровнем они ускоряются, что заставит тебя двигать своей мышкой быстрее.
+В игре есть 4 уровня сложности "Лёгкий","Средний","Сложный","Кошмарный".
+Каждый уровень сложности уменьшает размер кубиков, поэтому тебе прийдётся целиться точнее.
+Если после появления всех десяти кубиков
+ты не успеешь кликнуть хотя бы по одному из них в течении 20 сек,тогда Игра окончена.
+На этом всё.Удачи тебе в твоих свершениях!</value>
+  </data>
 </root>
